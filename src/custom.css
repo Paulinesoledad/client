@@ -1,0 +1,45 @@
+/* custom.css */
+
+/* Background */
+body {
+  background-color: #FAF3E0; /* Beige */
+  color: #333333;
+}
+
+/* Navbar customization */
+/* Strong olive green navbar */
+.navbar {
+  background-color: #556B2F !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar links and brand */
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #FAF3E0 !important; /* Beige text */
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar .nav-link:hover {
+  color: #ffffff !important;
+}
+
+
+
+/* Buttons */
+.btn-outline-success {
+  border-color: #556B2F;
+  color: #556B2F;
+}
+
+.btn-outline-success:hover {
+  background-color: #556B2F;
+  color: white;
+}
+
+/* Card titles */
+.card-title {
+  color: #556B2F;
+}
