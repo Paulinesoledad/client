@@ -1,4 +1,15 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+
+const PostCard = ({ post, onDelete }) => {
+  return (
+    <div style={{ border: '1px solid #ccc', marginBottom: '15px', padding: '10px' }}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+      <button onClick={() => onDelete(post._id)}>Delete</button>
+    </div>
+  );
+};
 
 function PostCard({ post }) {
   return (
