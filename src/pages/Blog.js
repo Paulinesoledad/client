@@ -1,44 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Fetch posts from backend
-    axios.get('http://localhost:5000/api/blogs')
-      .then(res => {
-      console.log('Fetched posts:', res.data);
-      setPosts(res.data);
-    })
-    .catch(err => console.error('Failed to load posts:', err));
-}, []);
+    axios
+      .get("http://localhost:5000/api/posts")
+      .then((res) => setPosts(res.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
-    <Container className="py-5">
-      <h2 className="text-center mb-4 text-success">Our Blog Posts</h2>
-      <Row>
-        {posts.map(post => (
-          <Col md={4} key={post._id} className="mb-4">
-            <Card className="h-100 shadow-sm">
-              {post.image && (
-                <Card.Img variant="top" src={post.image} alt={post.title} />
-              )}
-              <Card.Body>
-                <Card.Title>{post.title}</Card.Title>
-                <Card.Text>
-                  {post.content.slice(0, 100)}...
-                </Card.Text>
-                <Button variant="success">Read More</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+    <div className="container mt-4">
+      <h2 className="mb-4 text-center">Blog Posts</h2>
+      <div className="row">
+        {posts.map((post) => (
+          <div className="col-md-4 mb-4" key={post._id}>
+            <div className="card h-100">
+              <div className="card-body d-flex flex-column">
+                <h5 className="card-title">{post.title}</h5>
+                <p className="card-text">
+                  {post.content.length > 100
+                    ? post.content.substring(0, 100) + "..."
+                    : post.content}
+                </p>
+                <Link to={`/view/${post._id}`} className="btn btn-success mt-auto">
+                  Read More
+                </Link>
+              </div>
+            </div>
+          </div>
         ))}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 
 export default Blog;
-

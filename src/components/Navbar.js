@@ -24,16 +24,35 @@ function Navbar() {
             <li className="nav-item">
               <Link to="/blog" className="nav-link">Blog</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/create" className="nav-link">Create Post</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/register" className="nav-link">Register</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">Login</Link>
-            </li>
+            {localStorage.getItem("token") ? (
+              <>
+                <li className="nav-item">
+                  <Link to="/create" className="nav-link">Create Post</Link>
+                </li>
+                <li className="nav-item">
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      window.location.href = "/";
+                    }}
+                    className="btn btn-danger ms-2"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link to="/register" className="nav-link">Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">Login</Link>
+                </li>
+              </>
+            )}
           </ul>
+
 
         </div>
       </div>
