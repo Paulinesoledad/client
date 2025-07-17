@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const API = axios.create({
-  baseURL: 'http://localhost:5000/api/posts',
+const api = axios.create({
+  baseURL: 'http://localhost:5000/api',
 });
 
-export const fetchPosts = () => API.get('/');
-export const createPost = (newPost) => API.post('/', newPost);
-export const deletePost = (id) => API.delete(`/${id}`);
-export const updatePost = (id, updatedPost) => API.put(`/${id}`, updatedPost);
-export default axios.create({baseURL: 'http://localhost:5000/api'});
+export const fetchPosts = () => api.get('/posts');
+export const createPost = (newPost) => api.post('/posts', newPost);
+export const deletePost = (id) => api.delete(`/posts/${id}`);
+export const updatePost = (id, updatedPost) => api.put(`/posts/${id}`, updatedPost);
+
+export default api;
+

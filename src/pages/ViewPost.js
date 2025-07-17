@@ -62,10 +62,15 @@ const ViewPost = () => {
       )}
 
       <div className="text-center mt-4">
+        <Link to={`/edit/${post._id}`} className="btn btn-outline-dark px-4 me-2">
+          Edit Post
+        </Link>
+
         <Link to="/blog" className="btn btn-dark px-4">
           Back to Blog
         </Link>
       </div>
+
     </div>
   </div>
 );
